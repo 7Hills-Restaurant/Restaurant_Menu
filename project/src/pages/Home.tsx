@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       category: "menu"
     },
     {
-      name: "Andra Biryani",
+      name: "Andhra Chicken Biryani",
       description: "Fragrant basmati rice with tender lamb and aromatic spices",
       price: "€19.5",
       image: "/menu/ChickenBiryani.jpg",
@@ -28,14 +28,14 @@ const Home: React.FC = () => {
   ];
 
   const menuCategories = [
-    { name: "Starters", path: "/menu", image: "https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg" },
-    { name: "Idli & Dosa", path: "/menu", image: "https://images.pexels.com/photos/5560754/pexels-photo-5560754.jpeg" },
-    { name: "Chicken", path: "/menu", image: "https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg" },
-    { name: "Lamb", path: "/menu", image: "https://images.pexels.com/photos/8629141/pexels-photo-8629141.jpeg" },
-    { name: "7 Hills Thali", path: "/menu", image: "https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg" },
-    { name: "Tandoori", path: "/menu", image: "https://images.pexels.com/photos/5410400/pexels-photo-5410400.jpeg" },
-    { name: "Naan", path: "/menu", image: "https://images.pexels.com/photos/4449068/pexels-photo-4449068.jpeg" },
-    { name: "Biryani", path: "/menu", image: "https://images.pexels.com/photos/1893557/pexels-photo-1893557.jpeg" }
+    { name: "Starters", path: "/menu", image: "/menu/ChickenPakoda.jpg" },
+    { name: "Idli & Dosa", path: "/menu", image: "/menu/CheesePlainDosa.jpg" },
+    { name: "Chicken", path: "/menu", image: "/menu/ChickenKorma.jpg" },
+    { name: "Lamb", path: "/menu", image: "/menu/LambKorma.jpg" },
+    { name: "7 Hills Thali", path: "/menu", image: "/menu/Non-VegThal.jpeg" },
+    { name: "Tandoori", path: "/menu", image: "/menu/ChickenTandoori.jpg" },
+    { name: "Naan", path: "/menu", image: "/menu/GarlicNaan.jpg" },
+    { name: "Biryani", path: "/menu", image: "/menu/ChickenBiryani.jpg" }
   ];
 
   return (

@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center justify-center md:justify-start space-x-3">
                 <Mail className="text-yellow-400" size={20} />
-                <span>info@7hillsindian.com</span>
+                <span>info@7hillsrestaurant.com</span>
               </div>
             </div>
           </div>
