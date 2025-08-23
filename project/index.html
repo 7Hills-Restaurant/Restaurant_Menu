@@ -2,29 +2,198 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link href="https://fonts.googleapis.com/css2?
-family=Playfair+Display:wght@400;600;700&
-family=Cormorant+Garamond:wght@400;500;700&
-family=Merriweather:wght@400;700&
-family=Roboto+Slab:wght@400;600;700&
-family=Libre+Baskerville:wght@400;700&
-family=Lato:wght@400;700&
-family=Open+Sans:wght@400;600;700&
-family=Poppins:wght@400;600;700&
-family=Montserrat:wght@400;600;700&
-family=Raleway:wght@400;600;700&
-family=Great+Vibes&
-family=Dancing+Script:wght@400;600&
-family=Parisienne&
-family=Satisfy&display=swap" 
-rel="stylesheet">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="7 Hills Indian Restaurant - Authentic Indian cuisine with traditional flavors and aromatic spices. Experience the best of Indian dining with our carefully crafted menu." />
-    <meta name="keywords" content="Indian restaurant, authentic Indian food, curry, biryani, tandoori, Indian cuisine, spices" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;700&family=Merriweather:wght@400;700&family=Roboto+Slab:wght@400;600;700&family=Libre+Baskerville:wght@400;700&family=Lato:wght@400;700&family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Montserrat:wght@400;600;700&family=Raleway:wght@400;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;600&family=Parisienne&family=Satisfy&display=swap" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <title>7 Hills Indian Restaurant - Authentic Taste of India | Best Indian Cuisine</title>
+    <meta name="title" content="7 Hills Indian Restaurant - Authentic Taste of India | Best Indian Cuisine" />
+    <meta name="description" content="7 Hills Indian Restaurant - Authentic Indian cuisine with traditional flavors and aromatic spices. Experience the best of Indian dining with our carefully crafted menu featuring curry, biryani, tandoori, and more." />
+    <meta name="keywords" content="7 Hills Indian Restaurant, authentic Indian food, curry, biryani, tandoori, Indian cuisine, spices, Indian restaurant, best Indian food, traditional Indian dishes" />
     <meta name="author" content="7 Hills Indian Restaurant" />
-    <title>7 Hills Indian Restaurant - Authentic Taste of India</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://7hillsrestaurant.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://7hillsrestaurant.com/" />
+    <meta property="og:title" content="7 Hills Indian Restaurant - Authentic Taste of India" />
+    <meta property="og:description" content="Experience authentic Indian cuisine with traditional flavors and aromatic spices. Featuring curry, biryani, tandoori, and carefully crafted Indian dishes." />
+    <meta property="og:image" content="https://7hillsrestaurant.com/indian-restaurant-hero.jpg" />
+    <meta property="og:site_name" content="7 Hills Indian Restaurant" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://7hillsrestaurant.com/" />
+    <meta property="twitter:title" content="7 Hills Indian Restaurant - Authentic Taste of India" />
+    <meta property="twitter:description" content="Experience authentic Indian cuisine with traditional flavors and aromatic spices. Featuring curry, biryani, tandoori, and carefully crafted Indian dishes." />
+    <meta property="twitter:image" content="https://7hillsrestaurant.com/indian-restaurant-hero.jpg" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="language" content="English" />
+
+    <!-- Structured Data (JSON-LD) for Indian Restaurant -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "7 Hills Indian Restaurant",
+      "alternateName": "7Hills Indian Restaurant",
+      "description": "Authentic Indian restaurant serving traditional cuisine with aromatic spices and flavors. Specializing in curry, biryani, tandoori, and regional Indian dishes.",
+      "image": [
+        "https://7hillsrestaurant.com/indian-restaurant-exterior.jpg",
+        "https://7hillsrestaurant.com/indian-restaurant-interior.jpg",
+        "https://7hillsrestaurant.com/indian-biryani-special.jpg",
+        "https://7hillsrestaurant.com/tandoori-platter.jpg",
+        "https://7hillsrestaurant.com/curry-dishes.jpg"
+      ],
+      "url": "https://7hillsrestaurant.com",
+      "telephone": "+1-555-INDIA-77",
+      "email": "info@7hillsrestaurant.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Fonteinstraat 123",
+        "addressLocality": "Leuven",
+        "addressRegion": "Belgium",
+        "postalCode": "3000",
+        "addressCountry": "BE"
+      },
+      "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "50.8798",
+          "longitude": "4.7005"
+        },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "17:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "17:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "12:00",
+          "closes": "22:00"
+        }
+      ],
+      "servesCuisine": [
+        "Indian",
+        "South Asian",
+        "Vegetarian",
+        "Vegan Options",
+        "Halal"
+      ],
+      "priceRange": "$$",
+      "acceptsReservations": true,
+      "hasMenu": {
+        "@type": "Menu",
+        "url": "https://7hillsrestaurant.com/#menu",
+        "hasMenuSection": [
+          {
+            "@type": "MenuSection",
+            "name": "Appetizers",
+            "description": "Traditional Indian starters and snacks"
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Curry Dishes",
+            "description": "Authentic curries with aromatic spices"
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Biryani & Rice",
+            "description": "Fragrant basmati rice dishes"
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Tandoori Specialties",
+            "description": "Clay oven grilled meats and vegetables"
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Breads",
+            "description": "Fresh naan, roti, and Indian breads"
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Desserts",
+            "description": "Traditional Indian sweets"
+          }
+        ]
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Vegetarian Options",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Vegan Options",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Halal Food",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Takeout",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Delivery",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Dine-in",
+          "value": true
+        }
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://7hillsrestaurant.com/#reservations",
+          "actionPlatform": [
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform"
+          ]
+        },
+        "result": {
+          "@type": "Reservation",
+          "name": "Table Reservation"
+        }
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
