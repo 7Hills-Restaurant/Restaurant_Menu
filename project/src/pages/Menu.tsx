@@ -175,7 +175,7 @@ const menuItems=[
 
   // Biryani
   { id: "63", name: "Lamb Biryani", price: 20.50, category: "biryani", isVeg: false, imgUrl:"/menu/LambBiryani.jpg" },
-  { id: "64", name: "Andhra Chicken Biryani", price: 19.50, category: "biryani", isVeg: false, imgUrl:"/menu/ChickenBiryani.png" },
+  { id: "64", name: "Andhra Chicken Biryani", price: 19.50, category: "biryani", isVeg: false, imgUrl:"/menu/ChickenBiryani.webp" },
   { id: "65", name: "Vegetable Biryani", price: 18.50, category: "biryani", isVeg: true, imgUrl:"/menu/Vegetable Biryani.jpg" },
 
   // 7 Hills Thali - Vegetarian Thali

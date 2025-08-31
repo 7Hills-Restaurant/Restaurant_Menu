@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       name: "Andhra Chicken Biryani",
       description: "Fragrant basmati rice with tender lamb and aromatic spices",
       price: "€19.5",
-      image: "/menu/ChickenBiryani.png",
+      image: "/menu/ChickenBiryani.webp",
       category: "menu"
     },
     {
