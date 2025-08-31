@@ -175,7 +175,7 @@ const menuItems=[
 
   // Biryani
   { id: "63", name: "Lamb Biryani", price: 20.50, category: "biryani", isVeg: false, imgUrl:"/menu/LambBiryani.jpg" },
-  { id: "64", name: "Andhra Chicken Biryani", price: 19.50, category: "biryani", isVeg: false, imgUrl:"/menu/ChickenBiryani.jpg" },
+  { id: "64", name: "Andhra Chicken Biryani", price: 19.50, category: "biryani", isVeg: false, imgUrl:"/menu/ChickenBiryani.png" },
   { id: "65", name: "Vegetable Biryani", price: 18.50, category: "biryani", isVeg: true, imgUrl:"/menu/Vegetable Biryani.jpg" },
 
   // 7 Hills Thali - Vegetarian Thali
@@ -379,11 +379,11 @@ const Menu = () => {
   return (
     <div className="min-h-screen py-16 bg-gray-50">
       {/* Header Section */}
-      <div className="bg-red-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-12 text-white bg-red-900">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Menu</h1>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+            <h1 className="mb-4 text-4xl font-bold md:text-5xl">Our Menu</h1>
+            <div className="w-24 h-1 mx-auto mb-6 bg-yellow-500"></div>
             <p className="text-xl text-gray-200">
               Discover authentic Indian flavors crafted with traditional recipes
             </p>
@@ -392,23 +392,23 @@ const Menu = () => {
       </div>
 
       {/* Fixed Search and Filter Section */}
-      <div className="bg-white shadow-lg sticky top-0 z-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="sticky top-0 z-50 bg-white border-b shadow-lg">
+        <div className="px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           {/* Search Bar */}
           <div className="relative mb-4">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <Search className="absolute text-gray-400 transform -translate-y-1/2 left-3 top-1/2" size={20} />
             <input
               type="text"
               placeholder="Search for dishes..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+              className="w-full py-3 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
             />
           </div>
 
           {/* Filter Controls */}
-          <div className="flex flex-wrap gap-4 items-center justify-between">
-            <div className="flex flex-wrap gap-4 items-center">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               {/* Category Filter */}
               <div className="relative">
                 <select
@@ -417,14 +417,14 @@ const Menu = () => {
                     setSelectedCategory(e.target.value);
                     setSelectedSubcategory('all');
                   }}
-                  className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                  className="px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                 >
                   <option value="all">All Categories</option>
                   {menuCategories.map(category => (
                     <option key={category.id} value={category.id}>{category.name}</option>
                   ))}
                 </select>
-                <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+                <ChevronDown className="absolute text-gray-400 transform -translate-y-1/2 right-2 top-1/2" size={16} />
               </div>
 
               {/* Subcategory Filter */}
@@ -433,19 +433,19 @@ const Menu = () => {
                   <select
                     value={selectedSubcategory}
                     onChange={(e) => setSelectedSubcategory(e.target.value)}
-                    className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   >
                     <option value="all">All Subcategories</option>
                     {getSubcategories().map(subcategory => (
                       <option key={subcategory} value={subcategory}>{subcategory}</option>
                     ))}
                   </select>
-                  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+                  <ChevronDown className="absolute text-gray-400 transform -translate-y-1/2 right-2 top-1/2" size={16} />
                 </div>
               )}
 
               {/* Dietary Filter */}
-              <div className="flex bg-gray-100 rounded-lg p-1">
+              <div className="flex p-1 bg-gray-100 rounded-lg">
                 <button
                   onClick={() => setDietaryFilter('all')}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -486,13 +486,13 @@ const Menu = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                className="px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
               >
                 <option value="name">Sort by Name</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
               </select>
-              <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+              <ChevronDown className="absolute text-gray-400 transform -translate-y-1/2 right-2 top-1/2" size={16} />
             </div>
           </div>
 
@@ -504,41 +504,41 @@ const Menu = () => {
       </div>
 
       {/* Menu Items Grid - 4 per row */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {filteredAndSortedItems.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="text-gray-400 mb-4">
+          <div className="py-12 text-center">
+            <div className="mb-4 text-gray-400">
               <Search size={48} className="mx-auto" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">No dishes found</h3>
+            <h3 className="mb-2 text-xl font-semibold text-gray-600">No dishes found</h3>
             <p className="text-gray-500">Try adjusting your search or filters</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filteredAndSortedItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100"
+                className="overflow-hidden transition-all duration-300 bg-white border border-gray-100 rounded-lg shadow-md hover:shadow-xl group"
               >
-                <div className="relative overflow-hidden h-48">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={item.imgUrl}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
                     // onError={(e) => {
                     //   e.target.src = 'https://images.pexels.com/photos/1893556/pexels-photo-1893556.jpeg';
                     // }}
                   />
-                  <div className="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full font-bold text-sm">
+                  <div className="absolute px-2 py-1 text-sm font-bold text-black bg-yellow-500 rounded-full top-2 right-2">
                     €{item.price.toFixed(2)}
                   </div>
                   <div className="absolute top-2 left-2">
                     {item.isVeg ? (
-                      <div className="bg-green-500 p-1 rounded-full">
+                      <div className="p-1 bg-green-500 rounded-full">
                         <Leaf size={14} className="text-white" />
                       </div>
                     ) : (
-                      <div className="bg-red-500 p-1 rounded-full">
+                      <div className="p-1 bg-red-500 rounded-full">
                         <UtensilsCrossed size={14} className="text-white" />
                       </div>
                     )}
@@ -546,14 +546,14 @@ const Menu = () => {
                 </div>
 
                 <div className="p-4">
-                  <h3 className="text-lg font-bold text-red-900 mb-2 line-clamp-2">{item.name}</h3>
-                  <div className="flex items-center justify-between text-sm text-gray-600 mb-3">
-                    <span className="bg-gray-100 px-2 py-1 rounded text-xs">
+                  <h3 className="mb-2 text-lg font-bold text-red-900 line-clamp-2">{item.name}</h3>
+                  <div className="flex items-center justify-between mb-3 text-sm text-gray-600">
+                    <span className="px-2 py-1 text-xs bg-gray-100 rounded">
                       {menuCategories.find(cat => cat.id === item.category)?.name}
                     </span>
                   </div>
                   {item.subcategory && (
-                    <span className="text-sm text-gray-500 mb-3 block">{item.subcategory}</span>
+                    <span className="block mb-3 text-sm text-gray-500">{item.subcategory}</span>
                   )}
                   
                 
