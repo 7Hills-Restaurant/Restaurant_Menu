@@ -25,7 +25,7 @@ interface MenuItem {
 }
 
 // --- Configuration ---
-const API_URL = 'http://localhost:5000/api/menu';
+const API_URL = import.meta.env.VITE_MENU_API_URL;
 
 
 const Menu: React.FC = () => {

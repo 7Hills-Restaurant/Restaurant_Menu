@@ -27,7 +27,7 @@ interface FeaturedDish {
 }
 
 // --- Configuration ---
-const API_URL = 'http://localhost:5000/api/menu';
+const API_URL = import.meta.env.VITE_MENU_API_URL;
 
 const Home: React.FC = () => {
   // --- State for Dynamic Data ---
