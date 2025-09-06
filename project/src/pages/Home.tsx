@@ -49,13 +49,13 @@ const Home: React.FC = () => {
         ]);
 
 
-        console.log(featuredResponse.data)
+     
         setFeaturedDishes(featuredResponse.data);
       
         
         // Display a curated list of categories, or all if fewer than 8
         const allCategories = categoriesResponse.data;
-        console.log(allCategories,"aaa")
+    
         const preferredCategories = ["h"];
         const filteredCategories = allCategories.filter(c => preferredCategories.includes(c.id_name));
         setMenuCategories(filteredCategories.length > 0 ? filteredCategories : allCategories.slice(0, 12));
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
 
     fetchHomeData();
   }, []); // Empty dependency array ensures this runs only once on mount
-console.log(featuredDishes,menuCategories)
+
 
   return (
     <div className="pt-16">
