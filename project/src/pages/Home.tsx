@@ -1,47 +1,81 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-// import { ArrowRight, Star, Clock, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom'; // Removed this import
+import axios from 'axios';
+import { ArrowRight } from 'lucide-react';
+
+// --- Type Definitions for API Data ---
+interface Category {
+  _id: string;
+  id_name: string;
+  name: string;
+  image: {
+    url: string;
+  };
+}
+
+interface FeaturedDish {
+  _id: string;
+  name: string;
+  price: number;
+  image: {
+    url: string;
+  };
+  // The category object is populated from the backend
+  category: {
+    id_name: string;
+  };
+}
+
+// --- Configuration ---
+const API_URL = 'http://localhost:5000/api/menu';
 
 const Home: React.FC = () => {
-  const featuredDishes = [
-    {
-      name: "Butter Chicken",
-      description: "Tender chicken in rich tomato and cream sauce",
-      price: "€16.5",
-      image: "/menu/ButterChicken.jpg",
-      category: "menu"
-    },
-    {
-      name: "Andhra Chicken Biryani",
-      description: "Fragrant basmati rice with tender lamb and aromatic spices",
-      price: "€19.5",
-      image: "/menu/ChickenBiryani.png",
-      category: "menu"
-    },
-    {
-      name: "Masala Dosa",
-      description: "Crispy crepe filled with spiced potato curry",
-      price: "€12.5",
-      image: "menu/MasalaDosa.jpg",
-      category: "menu"
-    }
-  ];
+  // --- State for Dynamic Data ---
+  const [featuredDishes, setFeaturedDishes] = useState<FeaturedDish[]>([]);
+  const [menuCategories, setMenuCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const menuCategories = [
-    { name: "Starters", path: "/menu", image: "/menu/ChickenPakoda.jpg" },
-    { name: "Idli & Dosa", path: "/menu", image: "/menu/CheesePlainDosa.jpg" },
-    { name: "Chicken", path: "/menu", image: "/menu/ChickenKorma.jpg" },
-    { name: "Lamb", path: "/menu", image: "/menu/LambKorma.jpg" },
-    { name: "7 Hills Thali", path: "/menu", image: "/menu/Non-VegThal.jpeg" },
-    { name: "Tandoori", path: "/menu", image: "/menu/ChickenTandoori.jpg" },
-    { name: "Naan", path: "/menu", image: "/menu/GarlicNaan.jpg" },
-    { name: "Biryani", path: "/menu", image: "/menu/ChickenBiryani.jpg" }
-  ];
+  // --- Data Fetching Effect ---
+  useEffect(() => {
+    const fetchHomeData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        // Fetch featured dishes and categories concurrently
+        const [featuredResponse, categoriesResponse] = await Promise.all([
+          axios.get<FeaturedDish[]>(`${API_URL}/featured`),
+          axios.get<Category[]>(`${API_URL}/categories`)
+        ]);
+
+
+        console.log(featuredResponse.data)
+        setFeaturedDishes(featuredResponse.data);
+      
+        
+        // Display a curated list of categories, or all if fewer than 8
+        const allCategories = categoriesResponse.data;
+        console.log(allCategories,"aaa")
+        const preferredCategories = ["h"];
+        const filteredCategories = allCategories.filter(c => preferredCategories.includes(c.id_name));
+        setMenuCategories(filteredCategories.length > 0 ? filteredCategories : allCategories.slice(0, 12));
+
+      } catch (err) {
+        console.error("Failed to fetch homepage data:", err);
+        setError("Could not load restaurant data. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHomeData();
+  }, []); // Empty dependency array ensures this runs only once on mount
+console.log(featuredDishes,menuCategories)
 
   return (
     <div className="pt-16">
       {/* Hero Section */}
-     <section className="relative flex items-center min-h-screen bg-red-900">
+       <section className="relative flex items-center min-h-screen bg-red-900">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -63,21 +97,21 @@ const Home: React.FC = () => {
                 From aromatic spices to traditional recipes, we bring you a culinary 
                 journey that celebrates the rich heritage of Indian cuisine.
               </p>
-              {/* <div className="flex flex-col gap-4 sm:flex-row">
-                <Link
-                  to="/menu"
-                  className="flex items-center justify-center px-8 py-4 text-lg font-bold text-orange-600 transition-all duration-300 transform bg-white rounded-full hover:bg-orange-50 hover:scale-105 group"
-                >
-                  Explore Menu
-                  <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
-                </Link>
-                <a
-                  href="tel:+32470652489"
-                  className="flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-300 transform border-2 border-white rounded-full hover:bg-white hover:text-orange-600 hover:scale-105"
-                >
-                  Call Now
-                </a>
-              </div> */}
+               <div className="flex flex-col gap-4 sm:flex-row">
+                 <a
+                   href="/menu"
+                   className="flex items-center justify-center px-8 py-4 text-lg font-bold text-red-900 transition-all duration-300 transform bg-white rounded-full hover:bg-orange-50 hover:scale-105 group"
+                 >
+                   Explore Menu
+                   <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
+                 </a>
+                 <a
+                   href="tel:+32470652489"
+                   className="flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-300 transform border-2 border-white rounded-full hover:bg-white hover:text-red-900 hover:scale-105"
+                 >
+                   Call Now
+                 </a>
+               </div>
             </div>
             
             {/* Hero Image */}
@@ -114,41 +148,45 @@ const Home: React.FC = () => {
               Discover our most popular dishes that showcase the authentic flavors of India
             </p>
           </div>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {featuredDishes.map((dish, index) => (
-              <div
-                key={index}
-                className="overflow-hidden transition-all duration-300 bg-white border border-gray-100 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 group"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={dish.image}
-                    alt={dish.name}
-                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute px-3 py-1 font-bold text-black bg-yellow-500 rounded-full top-4 right-4">
-                    {dish.price}
+          
+          {loading && <p className="text-center">Loading featured dishes...</p>}
+          {error && <p className="text-center text-red-500">{error}</p>}
+          
+          {!loading && !error && (
+            <div className="grid gap-8 md:grid-cols-3">
+              {featuredDishes.map((dish) => (
+                <div
+                  key={dish._id}
+                  className="overflow-hidden transition-all duration-300 bg-white border border-gray-100 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 group"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={dish.image.url}
+                      alt={dish.name}
+                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute px-3 py-1 font-bold text-black bg-yellow-500 rounded-full top-4 right-4">
+                      €{dish.price.toFixed(2)}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h4 className="mb-3 text-xl font-bold text-red-900">{dish.name}</h4>
+                    <a
+                      href={`/menu?category=${dish.category.id_name}`}
+                      className="inline-flex items-center font-medium text-yellow-600 hover:text-yellow-700"
+                    >
+                     Explore Our Full Menu <ArrowRight className="w-4 h-4 ml-1" />
+                    </a>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h4 className="mb-3 text-xl font-bold text-red-900">{dish.name}</h4>
-                  <p className="mb-4 leading-relaxed text-gray-700">{dish.description}</p>
-                  <Link
-                    to={`/${dish.category}`}
-                    className="inline-flex items-center font-medium text-yellow-600 hover:text-yellow-700"
-                  >
-                 Explore Our Full Menu 
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* Menu Categories Section */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-gray-50">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-4xl font-bold text-red-900 md:text-5xl">Menu Categories</h2>
@@ -158,27 +196,31 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {menuCategories.map((category, index) => (
-              <Link
-                key={index}
-                to={category.path}
-                className="relative overflow-hidden transition-all duration-300 transform rounded-lg shadow-lg group hover:shadow-2xl hover:scale-105"
-              >
-                <div className="aspect-square">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 transition-colors duration-300 bg-black/40 group-hover:bg-black/50"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <h3 className="px-4 text-xl font-bold text-center text-white">{category.name}</h3>
+          {loading && <p className="text-center">Loading categories...</p>}
+          {error && <p className="text-center text-red-500">{error}</p>}
+
+          {!loading && !error && (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {menuCategories.map((category) => (
+                <a
+                  key={category._id}
+                  href={`/menu?category=${category.id_name}`}
+                  className="relative flex items-center justify-center p-4 overflow-hidden transition-all duration-300 transform bg-red-800 rounded-lg shadow-lg group aspect-square hover:shadow-2xl hover:scale-105"
+                >
+                  <div className="absolute inset-0 transition-transform duration-300 transform group-hover:scale-110">
+                    <img
+                      src={category.image.url}
+                      alt={category.name}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+
+                  <div className="absolute inset-0 transition-colors duration-300 bg-black/40 group-hover:bg-black/50"></div>
+                  <h3 className="relative px-4 text-xl font-bold text-center text-white">{category.name}</h3>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -190,18 +232,18 @@ const Home: React.FC = () => {
             Visit us today and embark on a culinary journey through the diverse flavors of India
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold text-black transition-all duration-300 transform bg-yellow-500 rounded-full hover:bg-yellow-400 hover:scale-105"
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-black transition-all duration-300 transform bg-yellow-500 rounded-full hover:bg-yellow-400 hover:scale-105"
             >
               Contact Us
-            </Link>
-            <Link
-              to="/menu"
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold text-yellow-500 transition-all duration-300 transform border-2 border-yellow-500 rounded-full hover:bg-yellow-500 hover:text-black hover:scale-105"
+            </a>
+            <a
+              href="/menu"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-yellow-500 transition-all duration-300 transform border-2 border-yellow-500 rounded-full hover:bg-yellow-500 hover:text-black hover:scale-105"
             >
               View Full Menu
-            </Link>
+            </a>
           </div>
         </div>
       </section>
